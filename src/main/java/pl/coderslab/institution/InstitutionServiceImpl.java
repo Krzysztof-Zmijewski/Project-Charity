@@ -1,10 +1,17 @@
 package pl.coderslab.institution;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class InstitutionServiceImpl implements InstitutionService{
     private InstitutionRepository institutionRepository;
+
+    @Override
+    public List<Institution> findAll() {
+        return institutionRepository.findAll();
+    }
 }
