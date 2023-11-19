@@ -18,12 +18,12 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-facebook.svg"/>" alt="facebook icon"/></a>
-            <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-instagram.svg"/>" alt="instagram icon"/></a>
+            <a href="#" class="btn btn--small"><img src="<c:url value="/resources/images/icon-facebook.svg"/>" alt="facebook icon"/></a>
+            <a href="#" class="btn btn--small"><img src="<c:url value="/resources/images/icon-instagram.svg"/>" alt="instagram icon"/></a>
         </div>
     </div>
 </footer>
 
-<script src="<c:url value="resources/js/app.js"/>"></script>
+<script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

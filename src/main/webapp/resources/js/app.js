@@ -171,4 +171,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+  const hiddenInput = document.getElementsByName("_categories");
+  for (let i = hiddenInput.length - 1; i >= 0; i--) {
+    hiddenInput[i].remove();
+  }
 });

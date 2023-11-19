@@ -2,6 +2,7 @@ package pl.coderslab.donation;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.category.Category;
 import pl.coderslab.institution.Institution;
 
@@ -19,13 +20,15 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @OneToMany
+    @ManyToMany
     private List<Category> categories;
     @ManyToOne
     private Institution institution;
     private String street;
     private String city;
     private String zipCode;
+    private Integer phoneNumber;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private String pickUpComment;
