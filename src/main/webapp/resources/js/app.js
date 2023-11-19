@@ -175,4 +175,11 @@ document.addEventListener("DOMContentLoaded", function() {
   for (let i = hiddenInput.length - 1; i >= 0; i--) {
     hiddenInput[i].remove();
   }
+// Number of bags in summary
+  const bags = document.querySelector("#formQuantity");
+  const bagsQuantity = document.querySelector("#donationQuantity");
+  bags.addEventListener("keyup", () => {
+    bagsQuantity.innerText = bags.value;
+  })
+
 });
