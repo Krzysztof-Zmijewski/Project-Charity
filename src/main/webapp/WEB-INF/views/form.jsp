@@ -155,22 +155,22 @@
               <div class="form-section--column">
                 <h4>Adres odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Ulica <form:input path="street" type="text" name="address" /> </label>
+                  <label> Ulica <form:input path="street" type="text" name="address" id="street" /> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Miasto <form:input path="city" type="text" name="city" /> </label>
+                  <label> Miasto <form:input path="city" type="text" name="city" id="city"/> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Kod pocztowy <form:input path="zipCode" type="text" name="postcode" />
+                    Kod pocztowy <form:input path="zipCode" type="text" name="postcode" id="zipCode" />
                   </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Numer telefonu <form:input path="phoneNumber" type="phone" name="phone" />
+                    Numer telefonu <form:input path="phoneNumber" type="phone" name="phone" id="phoneNumber" />
                   </label>
                 </div>
               </div>
@@ -178,17 +178,17 @@
               <div class="form-section--column">
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Data <form:input path="pickUpDate" type="date" name="data" /> </label>
+                  <label> Data <form:input path="pickUpDate" type="date" name="data" id="pickUpDate"/> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Godzina <form:input path="pickUpTime" type="time" name="time" /> </label>
+                  <label> Godzina <form:input path="pickUpTime" type="time" name="time" id="pickUpTime"/> </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <form:textarea path="pickUpComment" name="more_info" rows="5"></form:textarea>
+                    <form:textarea path="pickUpComment" name="more_info" rows="5" id="pickUpComment"></form:textarea>
                   </label>
                 </div>
               </div>
