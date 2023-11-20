@@ -90,6 +90,7 @@
 
                           value="${category}"
                           path="categories"
+                          id="categories"
                   />
                   <spam class="checkbox"></spam>
                   <span class="description">${category.name}</span>
@@ -128,7 +129,7 @@
             <c:forEach items="${institutions}" var="institution">
             <div class="form-group form-group--checkbox">
               <label>
-                <form:radiobutton path="institution" name="organization" value="old" />
+                <form:radiobutton path="institution" name="${institution.name}" value="${institution}" id="organization" />
                 <span class="checkbox radio"></span>
                 <span class="description">
                   <div class="title">Fundacja “${institution.name}”</div>

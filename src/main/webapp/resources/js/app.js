@@ -179,7 +179,30 @@ document.addEventListener("DOMContentLoaded", function() {
   const bags = document.querySelector("#formQuantity");
   const bagsQuantity = document.querySelector("#donationQuantity");
   bags.addEventListener("keyup", () => {
-    bagsQuantity.innerText = bags.value;
+    if(bags.value === 1) {
+      bagsQuantity.innerText = bags.value + " worek " + category;
+    }
+    if(bags.value > 1 && bags.value < 5) {
+      bagsQuantity.innerText = bags.value + " worki " + category;
+    }
+    if(bags.value >= 5) {
+      bagsQuantity.innerText = bags.value + " worków " + category;
+    }
   })
-
+  //Category in summary
+  const categories = document.querySelectorAll("#categories");
+  let category = "";
+  categories.forEach(el => {
+    el.addEventListener("click", () => {
+      category += el.nextSibling.nextSibling.nextSibling.nextSibling.textContent + ",";
+    })
+  })
+  //Institution in summary
+  const donationInstitution = document.querySelector("#donationInstitution");
+  const institution = document.querySelectorAll("#organization");
+  institution.forEach(el => {
+    el.addEventListener("click", () => {
+      donationInstitution.innerText = el.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.textContent;
+    })
+  })
 });
