@@ -16,6 +16,11 @@ public class DonationServiceImpl implements DonationService{
     }
 
     @Override
+    public void create(Donation donation) {
+        donationRepository.save(donation);
+    }
+
+    @Override
     public Integer countAllQuantity() {
         List<Donation> donations = donationRepository.findAll();
         Integer count = 0;
@@ -24,4 +29,5 @@ public class DonationServiceImpl implements DonationService{
         }
         return count;
     }
+
 }
