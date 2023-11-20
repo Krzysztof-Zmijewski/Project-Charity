@@ -205,4 +205,46 @@ document.addEventListener("DOMContentLoaded", function() {
       donationInstitution.innerText = el.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.textContent;
     })
   })
+  // Street summary
+  const streetSummary = document.querySelector("#donationStreet");
+  const street = document.querySelector("#street");
+  street.addEventListener("keyup", () => {
+    streetSummary.innerText = street.value;
+  })
+  //City summary
+  const citySummary = document.querySelector("#donationCity");
+  const city = document.querySelector("#city");
+  city.addEventListener("keyup", () => {
+    citySummary.innerText = city.value;
+  })
+  //ZipCode summary
+  const zipCodeSummary = document.querySelector("#donationZipCode");
+  const zipCode = document.querySelector("#zipCode");
+  zipCode.addEventListener("keyup", () => {
+    zipCodeSummary.innerText = zipCode.value;
+  })
+  // PhoneNumber summary
+  const phoneNumberSummary = document.querySelector("#donationPhoneNumber");
+  const phoneNumber = document.querySelector("#phoneNumber");
+  phoneNumber.addEventListener("keyup", () => {
+    phoneNumberSummary.innerText = phoneNumber.value;
+  })
+  //PickUpDate summary
+  const pickUpDateSummary = document.querySelector("#donationPickUpDate");
+  const pickUpDate = document.querySelector("#pickUpDate");
+  pickUpDate.addEventListener("click", () => {
+    pickUpDateSummary.innerText = pickUpDate.value;
+  })
+  //PickUpTime summary
+  const pickUpTimeSummary = document.querySelector("#donationPickUpTime");
+  const pickUpTime = document.querySelector("#pickUpTime");
+  pickUpTime.addEventListener("click", () => {
+    pickUpDateSummary.innerText = pickUpDate.value;
+  })
+  //PickUpDescription summary
+  const pickUpDescriptionSummary = document.querySelector("#donationDescription");
+  const pickUpDescription = document.querySelector("#pickUpComment");
+  pickUpDescription.addEventListener("keyup", () => {
+    pickUpDescriptionSummary.innerText = pickUpDescription.value;
+  })
 });
