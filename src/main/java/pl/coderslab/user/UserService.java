@@ -1,10 +1,13 @@
 package pl.coderslab.user;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface UserService {
-    public void add (User user);
+    public void add (UserEntity userEntity);
 
-    public void remove (User user);
+    public void remove (UserEntity userEntity);
+
+    public UserDetails loginUser (UserEntity userEntity);
 }

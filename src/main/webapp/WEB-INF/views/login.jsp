@@ -1,11 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="frorm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
+<html>
+<head>
+    <title>login</title>
+</head>
+<body>
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -24,29 +25,22 @@
 </header>
 
 <section class="login-page">
-    <h2>Załóż konto</h2>
-    <frorm:form modelAttribute="user" method="post" action="/user/register">
-        <div class="form-group">
-            <form:input path="firstname" type="text" name="firstname" placeholder="Imię" />
-        </div>
-        <div class="form-group">
-            <form:input path="lastname" type="text" name="lastname" placeholder="Nazwisko" />
-        </div>
+    <h2>Zaloguj się</h2>
+    <form:form modelAttribute="user" method="post">
         <div class="form-group">
             <form:input path="username" type="email" name="email" placeholder="Email" />
         </div>
         <div class="form-group">
             <form:input path="password" type="password" name="password" placeholder="Hasło" />
-        </div>
-        <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="${pageContext.request.contextPath}/user/login" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <a href="${pageContext.request.contextPath}/user/register" class="btn btn--without-border">Załóż konto</a>
+            <button class="btn" type="submit">Zaloguj się</button>
         </div>
-    </frorm:form>
+    </form:form>
 </section>
-
 <%@include file="footer.jsp"%>
+</body>
+</html>
