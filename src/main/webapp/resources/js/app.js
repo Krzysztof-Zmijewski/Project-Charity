@@ -171,4 +171,80 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form !== null) {
     new FormSteps(form);
   }
+  const hiddenInput = document.getElementsByName("_categories");
+  for (let i = hiddenInput.length - 1; i >= 0; i--) {
+    hiddenInput[i].remove();
+  }
+// Number of bags in summary
+  const bags = document.querySelector("#formQuantity");
+  const bagsQuantity = document.querySelector("#donationQuantity");
+  bags.addEventListener("keyup", () => {
+    if(bags.value === 1) {
+      bagsQuantity.innerText = bags.value + " worek " + category;
+    }
+    if(bags.value > 1 && bags.value < 5) {
+      bagsQuantity.innerText = bags.value + " worki " + category;
+    }
+    if(bags.value >= 5) {
+      bagsQuantity.innerText = bags.value + " worków " + category;
+    }
+  })
+  //Category in summary
+  const categories = document.querySelectorAll("#categories");
+  let category = "";
+  categories.forEach(el => {
+    el.addEventListener("click", () => {
+      category += el.nextSibling.nextSibling.nextSibling.nextSibling.textContent + ",";
+    })
+  })
+  //Institution in summary
+  const donationInstitution = document.querySelector("#donationInstitution");
+  const institution = document.querySelectorAll("#organization");
+  institution.forEach(el => {
+    el.addEventListener("click", () => {
+      donationInstitution.innerText = el.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.textContent;
+    })
+  })
+  // Street summary
+  const streetSummary = document.querySelector("#donationStreet");
+  const street = document.querySelector("#street");
+  street.addEventListener("keyup", () => {
+    streetSummary.innerText = street.value;
+  })
+  //City summary
+  const citySummary = document.querySelector("#donationCity");
+  const city = document.querySelector("#city");
+  city.addEventListener("keyup", () => {
+    citySummary.innerText = city.value;
+  })
+  //ZipCode summary
+  const zipCodeSummary = document.querySelector("#donationZipCode");
+  const zipCode = document.querySelector("#zipCode");
+  zipCode.addEventListener("keyup", () => {
+    zipCodeSummary.innerText = zipCode.value;
+  })
+  // PhoneNumber summary
+  const phoneNumberSummary = document.querySelector("#donationPhoneNumber");
+  const phoneNumber = document.querySelector("#phoneNumber");
+  phoneNumber.addEventListener("keyup", () => {
+    phoneNumberSummary.innerText = phoneNumber.value;
+  })
+  //PickUpDate summary
+  const pickUpDateSummary = document.querySelector("#donationPickUpDate");
+  const pickUpDate = document.querySelector("#pickUpDate");
+  pickUpDate.addEventListener("click", () => {
+    pickUpDateSummary.innerText = pickUpDate.value;
+  })
+  //PickUpTime summary
+  const pickUpTimeSummary = document.querySelector("#donationPickUpTime");
+  const pickUpTime = document.querySelector("#pickUpTime");
+  pickUpTime.addEventListener("click", () => {
+    pickUpDateSummary.innerText = pickUpDate.value;
+  })
+  //PickUpDescription summary
+  const pickUpDescriptionSummary = document.querySelector("#donationDescription");
+  const pickUpDescription = document.querySelector("#pickUpComment");
+  pickUpDescription.addEventListener("keyup", () => {
+    pickUpDescriptionSummary.innerText = pickUpDescription.value;
+  })
 });
