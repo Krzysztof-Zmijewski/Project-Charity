@@ -23,11 +23,7 @@ public class DonationServiceImpl implements DonationService{
     @Override
     public Integer countAllQuantity() {
         List<Donation> donations = donationRepository.findAll();
-        Integer count = 0;
-        for (Donation d: donations) {
-            count += d.getQuantity();
-        }
-        return count;
+        return donations.size();
     }
 
 }

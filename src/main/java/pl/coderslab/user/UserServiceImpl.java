@@ -32,19 +32,4 @@ public class UserServiceImpl implements UserService{
 
     }
 
-    @Override
-    public UserDetails loginUser(UserEntity userEntity) throws UsernameNotFoundException {
-        UserEntity loginUserEntity = userRepository.getUserByUsername(userEntity.getUsername());
-        if (loginUserEntity == null) {
-            throw new UsernameNotFoundException("User email " + userEntity.getUsername() + "not found");
-        }
-//        if (passwordEncoder.matches(user.getPassword(), loginUser.getPassword())) {
-//            return org.springframework.security.core.userdetails.User.builder().username(loginUser.getFirstname())
-//                    .password(loginUser.getPassword())
-//                    .
-//        }
-
-
-        return null;
-    }
 }

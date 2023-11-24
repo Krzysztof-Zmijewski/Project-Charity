@@ -9,5 +9,5 @@ public interface UserService {
 
     public void remove (UserEntity userEntity);
 
-    public UserDetails loginUser (UserEntity userEntity);
+
 }

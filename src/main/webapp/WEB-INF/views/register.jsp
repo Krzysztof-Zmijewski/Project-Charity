@@ -5,14 +5,18 @@
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="frorm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@include file="header.jsp"%>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" />
+</head>
+<body>
 <header>
     <nav class="container container--70">
-        <ul class="nav--actions">
-            <li><a href="${pageContext.request.contextPath}/user/login">Zaloguj</a></li>
-            <li class="highlighted"><a href="${pageContext.request.contextPath}/user/register">Załóż konto</a></li>
-        </ul>
-
         <ul>
             <li><a href="${pageContext.request.contextPath}/" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
