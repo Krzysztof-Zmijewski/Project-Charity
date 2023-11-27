@@ -1,9 +1,11 @@
 package pl.coderslab.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,10 +39,14 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @PreAuthorize("hasRole('USER')")
     public String login (UserEntity userEntity) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(userEntity.getUsername(), userEntity.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
+            return "redirect:/admin";
+        }
         return "redirect:/";
     }
 }
