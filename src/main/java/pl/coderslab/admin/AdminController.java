@@ -4,8 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.donation.DonationService;
+import pl.coderslab.institution.Institution;
 import pl.coderslab.institution.InstitutionService;
 
 @Controller
@@ -27,5 +30,41 @@ public class AdminController {
     public String institutions (Model model) {
         model.addAttribute("institutions", institutionService.findAll());
         return "institutions";
+    }
+
+    @GetMapping("/institutions/edit")
+    public String institutionEdit (@RequestParam Long id, Model model) {
+        model.addAttribute("institution", institutionService.get(id));
+        return "institutions-edit";
+    }
+
+    @PostMapping("/institutions/edit")
+    public String institutionsEdit (Institution institution) {
+        institutionService.update(institution);
+        return "redirect:/admin/institutions";
+    }
+
+    @GetMapping("/institutions/delete")
+    public String institutionsDelete (@RequestParam Long id, Model model) {
+        model.addAttribute("institution", institutionService.get(id));
+        return "institutions-delete-confirmation";
+    }
+
+    @PostMapping("/institutions/delete")
+    public String institutionsDelete (Institution institution) {
+        institutionService.delete(institution);
+        return "redirect:/admin/institutions";
+    }
+
+    @GetMapping("/institutions/add")
+    public String institutionsAdd (Model model) {
+        model.addAttribute("institution", new Institution());
+        return "institutions-add";
+    }
+
+    @PostMapping("/institutions/add")
+    public String institutionsAdd (Institution institution) {
+        institutionService.add(institution);
+        return "redirect:/admin/institutions";
     }
 }
