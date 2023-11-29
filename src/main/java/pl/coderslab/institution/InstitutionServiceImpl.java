@@ -32,7 +32,7 @@ public class InstitutionServiceImpl implements InstitutionService{
 
     @Override
     public void delete(Institution institution) {
-
+        institutionRepository.delete(institution);
     }
 
     @Override

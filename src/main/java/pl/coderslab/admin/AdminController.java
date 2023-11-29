@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.donation.DonationService;
 import pl.coderslab.institution.Institution;
 import pl.coderslab.institution.InstitutionService;
+import pl.coderslab.user.UserEntity;
+import pl.coderslab.user.UserService;
 
 @Controller
 @RequestMapping("/admin")
@@ -17,6 +19,7 @@ import pl.coderslab.institution.InstitutionService;
 public class AdminController {
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final UserService userService;
 
     @GetMapping("")
     public String dashboard (Model model) {
@@ -25,7 +28,7 @@ public class AdminController {
         model.addAttribute("donationCount", donationService.countAllDonations());
         return "indexAdmin";
     }
-
+    // Institutions CRUD
     @GetMapping("/institutions")
     public String institutions (Model model) {
         model.addAttribute("institutions", institutionService.findAll());
@@ -66,5 +69,23 @@ public class AdminController {
     public String institutionsAdd (Institution institution) {
         institutionService.add(institution);
         return "redirect:/admin/institutions";
+    }
+    //Admin CRUD
+    @GetMapping("/admins")
+    public String adminList (Model model) {
+        model.addAttribute("admins", userService.getAllAdmins());
+        return "admins-view";
+    }
+
+    @GetMapping("/edit")
+    public String adminEdit (@RequestParam Long id, Model model) {
+        model.addAttribute("admin", userService.get(id));
+        return "admins-edit";
+    }
+
+    @PostMapping("/edit")
+    public String adminEdit (UserEntity userEntity) {
+        userService.edit(userEntity);
+        return "redirect:/admin/admins";
     }
 }

@@ -73,6 +73,14 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/admins" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Administration</span>
+                </a>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 

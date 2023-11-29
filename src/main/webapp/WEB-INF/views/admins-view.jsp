@@ -57,10 +57,10 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/institutions/add" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/institutions" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Add institution</span>
+                <span>Institutions</span>
             </a>
         </li>
 
@@ -111,21 +111,23 @@
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${institutions}" var="institution">
-                <tr>
-                    <th scope="row">${institution.id}</th>
-                    <td>${institution.name}</td>
-                    <td>${institution.description}</td>
-                    <td><a href="${pageContext.request.contextPath}/admin/institutions/edit?id=${institution.id}">Edit</a>
-                        <a href="${pageContext.request.contextPath}/admin/institutions/delete?id=${institution.id}">Delete</a>
-                    </td>
-                </tr>
+                <c:forEach items="${admins}" var="admin">
+                    <tr>
+                        <th scope="row">${admin.id}</th>
+                        <td>${admin.firstname}</td>
+                        <td>${admin.lastname}</td>
+                        <td>${admin.username}</td>
+                        <td><a href="${pageContext.request.contextPath}/admin/edit?id=${admin.id}">Edit</a>
+                            <a href="${pageContext.request.contextPath}/admin/delete?id=${admin.id}">Delete</a>
+                        </td>
+                    </tr>
                 </c:forEach>
                 </tbody>
             </table>
