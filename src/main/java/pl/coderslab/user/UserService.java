@@ -15,9 +15,11 @@ public interface UserService {
 
     public void remove (UserEntity userEntity);
 
-    public List<UserEntity> getAllAdmins ();
+    public List<UserEntity> getAllAdmins();
 
     public UserEntity get(Long id);
+
+    public List<UserEntity> findAll();
 
 
 }

@@ -3,10 +3,7 @@ package pl.coderslab.admin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.donation.DonationService;
 import pl.coderslab.institution.Institution;
 import pl.coderslab.institution.InstitutionService;
@@ -87,5 +84,35 @@ public class AdminController {
     public String adminEdit (UserEntity userEntity) {
         userService.edit(userEntity);
         return "redirect:/admin/admins";
+    }
+
+    @GetMapping("/add")
+    public String adminAdd (Model model) {
+        model.addAttribute("admin", new UserEntity());
+        return "admins-add";
+    }
+
+    @PostMapping("/add")
+    public String adminAdd (UserEntity userEntity) {
+        userService.addAdmin(userEntity);
+        return "redirect:/admin/admins";
+    }
+
+    @GetMapping("/delete")
+    public String adminDelete (@RequestParam Long id, Model model) {
+        model.addAttribute("admin", userService.get(id));
+        return "admins-delete-confirmation";
+    }
+
+    @PostMapping("/delete")
+    public String adminDelete (UserEntity userEntity) {
+        userService.remove(userEntity);
+        return "redirect:/admin/admins";
+    }
+    //Users CRUD
+    @GetMapping("/users")
+    public String userList (Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "users-view";
     }
 }

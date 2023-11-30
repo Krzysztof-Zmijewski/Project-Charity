@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void remove(UserEntity userEntity) {
-
+        userRepository.delete(userEntity);
     }
 
     @Override
@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserEntity get(Long id) {
         return userRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+    }
+
+    @Override
+    public List<UserEntity> findAll() {
+        return userRepository.findAll();
     }
 
 }

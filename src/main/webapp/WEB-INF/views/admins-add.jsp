@@ -1,5 +1,8 @@
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -13,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Admin</title>
 
     <!-- Custom styles for this template-->
     <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
@@ -74,10 +77,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/add" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/admins" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Add admin</span>
+                <span>Administration</span>
             </a>
         </li>
 
@@ -107,30 +110,25 @@
 
             </nav>
             <!-- End of Topbar -->
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">FirstName</th>
-                    <th scope="col">LastName</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${admins}" var="admin">
-                    <tr>
-                        <th scope="row">${admin.id}</th>
-                        <td>${admin.firstname}</td>
-                        <td>${admin.lastname}</td>
-                        <td>${admin.username}</td>
-                        <td><a href="${pageContext.request.contextPath}/admin/edit?id=${admin.id}">Edit</a>
-                            <a href="${pageContext.request.contextPath}/admin/delete?id=${admin.id}">Delete</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <form:form modelAttribute="admin" method="post" action="/admin/add">
+                <div class="form-group">
+                    <form:label path="username">Email</form:label>
+                    <form:input path="username" class="form-control" aria-describedby="name" />
+                </div>
+                <div class="form-group">
+                    <form:label path="firstname">Firstname</form:label>
+                    <form:input path="firstname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <form:label path="lastname">Lastname</form:label>
+                    <form:input path="lastname" class="form-control" />
+                </div>
+                <form:button type="submit" class="btn btn-primary">Submit</form:button>
+            </form:form>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -145,7 +143,7 @@
 </a>
 
 
-<script src="/resources/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.js"></script>
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 
 </body>

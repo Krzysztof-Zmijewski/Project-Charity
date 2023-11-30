@@ -81,6 +81,14 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/users" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 
