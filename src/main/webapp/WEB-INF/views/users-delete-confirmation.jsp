@@ -1,3 +1,7 @@
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -17,7 +21,7 @@
     <title>Admin</title>
 
     <!-- Custom styles for this template-->
-    <link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 </head>
@@ -116,21 +120,14 @@
 
             </nav>
             <!-- End of Topbar -->
-            <form:form modelAttribute="admin" method="post" action="/admin/edit">
-                <div class="form-group">
-                    <form:label path="username">Email</form:label>
-                    <form:input path="username" class="form-control" aria-describedby="name" autocomplete="true"/>
-                </div>
-                <div class="form-group">
-                    <form:label path="firstname">Firstname</form:label>
-                    <form:input path="firstname" class="form-control" autocomplete="true"/>
-                </div>
-                <div class="form-group">
-                    <form:label path="lastname">Lastname</form:label>
-                    <form:input path="lastname" class="form-control" autocomplete="true"/>
-                </div>
+            <h1>Are you sure you want to delete admin "${user.username}"?</h1>
+            <form:form modelAttribute="user" method="post" action="/admin/users/delete">
+                <form:input path="username" class="form-control" aria-describedby="name" autocomplete="true" type="hidden"/>
+                <form:input path="firstname" class="form-control" autocomplete="true" type="hidden"/>
+                <form:input path="lastname" class="form-control" autocomplete="true" type="hidden"/>
                 <form:input path="id" type="hidden" autocomplete="true"/>
-                <form:button type="submit" class="btn btn-primary">Submit</form:button>
+                <form:button type="submit" class="btn btn-danger">Delete</form:button>
+                <a href="${pageContext.request.contextPath}/admin/admins" class="btn btn-info">Cancel</a>
             </form:form>
             <!-- End of Main Content -->
 

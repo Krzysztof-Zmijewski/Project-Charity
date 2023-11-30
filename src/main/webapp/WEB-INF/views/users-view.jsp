@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -14,10 +13,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom styles for this template-->
-    <link href="${pageContext.request.contextPath}/resources/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 </head>
@@ -83,10 +82,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/users" data-toggle="collapse" data-target="#collapseTwo"
+            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/users/add" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Users</span>
+                <span>Add user</span>
             </a>
         </li>
 
@@ -116,26 +115,30 @@
 
             </nav>
             <!-- End of Topbar -->
-            <form:form modelAttribute="admin" method="post" action="/admin/edit">
-                <div class="form-group">
-                    <form:label path="username">Email</form:label>
-                    <form:input path="username" class="form-control" aria-describedby="name" autocomplete="true"/>
-                </div>
-                <div class="form-group">
-                    <form:label path="firstname">Firstname</form:label>
-                    <form:input path="firstname" class="form-control" autocomplete="true"/>
-                </div>
-                <div class="form-group">
-                    <form:label path="lastname">Lastname</form:label>
-                    <form:input path="lastname" class="form-control" autocomplete="true"/>
-                </div>
-                <form:input path="id" type="hidden" autocomplete="true"/>
-                <form:button type="submit" class="btn btn-primary">Submit</form:button>
-            </form:form>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <!-- End of Footer -->
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${users}" var="user">
+                    <tr>
+                        <th scope="row">${user.id}</th>
+                        <td>${user.firstname}</td>
+                        <td>${user.lastname}</td>
+                        <td>${user.username}</td>
+                        <td><a href="${pageContext.request.contextPath}/admin/users/edit?id=${user.id}">Edit</a>
+                            <a href="${pageContext.request.contextPath}/admin/users/delete?id=${user.id}">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
 
         </div>
         <!-- End of Content Wrapper -->
@@ -150,7 +153,7 @@
 </a>
 
 
-<script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.js"></script>
+<script src="/resources/js/sb-admin-2.js"></script>
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 
 </body>

@@ -82,14 +82,6 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="${pageContext.request.contextPath}/admin/users" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Users</span>
-            </a>
-        </li>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -116,7 +108,7 @@
 
             </nav>
             <!-- End of Topbar -->
-            <form:form modelAttribute="admin" method="post" action="/admin/edit">
+            <form:form modelAttribute="user" method="post" action="/admin/users/edit">
                 <div class="form-group">
                     <form:label path="username">Email</form:label>
                     <form:input path="username" class="form-control" aria-describedby="name" autocomplete="true"/>

@@ -115,4 +115,40 @@ public class AdminController {
         model.addAttribute("users", userService.findAll());
         return "users-view";
     }
+
+    @GetMapping("/users/edit")
+    public String usersEdit (@RequestParam Long id ,Model model) {
+        model.addAttribute("user", userService.get(id));
+        return "users-edit";
+    }
+
+    @PostMapping("/users/edit")
+    public String usersEdit (UserEntity userEntity) {
+        userService.edit(userEntity);
+        return "redirect:/admin/users";
+    }
+
+    @GetMapping("/users/add")
+    public String usersAdd (Model model) {
+        model.addAttribute("user", new UserEntity());
+        return "users-add";
+    }
+
+    @PostMapping("/users/add")
+    public String usersAdd (UserEntity userEntity) {
+        userService.add(userEntity);
+        return "redirect:/admin/users";
+    }
+
+    @GetMapping("/users/delete")
+    public String usersDelete (@RequestParam Long id, Model model) {
+        model.addAttribute("user", userService.get(id));
+        return "users-delete-confirmation";
+    }
+
+    @PostMapping("users/delete")
+    public String usersDelete (UserEntity userEntity) {
+        userService.remove(userEntity);
+        return "redirect:/admin/users";
+    }
 }
