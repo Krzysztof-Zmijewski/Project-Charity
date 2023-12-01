@@ -21,5 +21,9 @@ public interface UserService {
 
     public List<UserEntity> findAll();
 
+    public List<UserEntity> getAllUsers();
+
+    public UserEntity getUserByUsername (String username);
+
 
 }

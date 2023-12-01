@@ -1,8 +1,6 @@
 package pl.coderslab.user;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.exception.ResourceNotFoundException;
@@ -39,6 +37,9 @@ public class UserServiceImpl implements UserService{
         toEdit.setFirstname(userEntity.getFirstname());
         toEdit.setLastname(userEntity.getLastname());
         toEdit.setUsername(userEntity.getUsername());
+        if (userEntity.getPassword() != null) {
+            toEdit.setPassword(passwordEncoder.encode(userEntity.getPassword()));
+        }
         userRepository.save(toEdit);
     }
 
@@ -50,6 +51,15 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserEntity> getAllAdmins() {
         return userRepository.findAllByRole(roleRepository.findRoleByName("ADMIN"));
+    }
+    @Override
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAllByRole(roleRepository.findRoleByName("USER"));
+    }
+
+    @Override
+    public UserEntity getUserByUsername(String username) {
+        return userRepository.getUserByUsername(username);
     }
 
     @Override

@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/user/logout")
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .and()
                 .build();

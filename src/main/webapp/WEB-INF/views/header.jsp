@@ -20,9 +20,11 @@
             <li class="logged-user">
                 Witaj <sec:authentication property="name"/>
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/edit">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
-                    <li><a href="#">Wyloguj</a></li>
+                    <li><form action="<c:url value="/logout"/>" method="post">
+                        <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+                    </form></li>
                 </ul>
             </li>
             </sec:authorize>

@@ -5,8 +5,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +49,18 @@ public class UserController {
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ADMIN"))) {
             return "redirect:/admin";
         }
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String edit (@AuthenticationPrincipal UserDetails user, Model model) {
+        model.addAttribute("user", userService.getUserByUsername(user.getUsername()));
+        return "edit-user";
+    }
+
+    @PostMapping("/edit")
+    public String edit (UserEntity userEntity) {
+        userService.edit(userEntity);
         return "redirect:/";
     }
 }

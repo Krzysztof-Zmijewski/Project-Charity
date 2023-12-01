@@ -112,7 +112,7 @@ public class AdminController {
     //Users CRUD
     @GetMapping("/users")
     public String userList (Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.getAllUsers());
         return "users-view";
     }
 
