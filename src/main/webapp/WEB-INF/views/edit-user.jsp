@@ -20,8 +20,8 @@
     <form:input path="lastname" class="form-control" autocomplete="true"/>
 </div>
 <div class="form-group">
-    <form:label path="password">Lastname</form:label>
-    <form:input path="password" class="form-control" type="password"/>
+    <form:label path="password">Password</form:label>
+    <form:input path="password" class="form-control" type="password" autocomplete="false"/>
 </div>
     <form:input path="id" type="hidden" autocomplete="true"/>
 <form:button type="submit" class="btn btn-primary">Submit</form:button>

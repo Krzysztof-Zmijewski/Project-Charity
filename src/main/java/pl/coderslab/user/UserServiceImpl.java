@@ -59,7 +59,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserEntity getUserByUsername(String username) {
-        return userRepository.getUserByUsername(username);
+        UserEntity user = userRepository.getUserByUsername(username);
+        user.setPassword(null);
+        return user;
     }
 
     @Override
