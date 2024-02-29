@@ -16,7 +16,6 @@ Technologie użyte w projekcie:
 - Hibernate
 - MySQL
 - Jsp/CSS
-- NBP Web API
 - JavaScript
 - Maven
 
