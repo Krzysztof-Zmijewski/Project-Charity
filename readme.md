@@ -8,7 +8,7 @@ Użytkownik, po stworzeniu własnego konta, może stworzyć własną darowizne w
 Na koniec całość jest podsumowana w jednym miejscu dla weryfikacji poprawności danych.
 Aplikacja posiada osobny widok dostępny tylko dla adminów. Posiadają oni dodatkowe uprawnienia np. edycje użytkowników, dodanie kolejnych adminów.
 
-##Technologie użyte w projekcie:
+Technologie użyte w projekcie:
 - Spring Boot
 - Spring Data JPA
 - Spring Web MVC
@@ -20,7 +20,7 @@ Aplikacja posiada osobny widok dostępny tylko dla adminów. Posiadają oni doda
 - JavaScript
 - Maven
 
-##Konfiguracja:
+Konfiguracja:
 - Przejdź do folderu src/main/resources
 - Otwórz plik application.properties
 - Zmień spring.datasource.username na swoją nazwę użytkownika MySQL
